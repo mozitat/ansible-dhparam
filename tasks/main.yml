@@ -49,10 +49,9 @@
   tags: [ 'meta::provision' ]
 
 - name: Install encryption software
-  apt:
+  package:
     name: '{{ item }}'
     state: 'present'
-    install_recommends: False
   when: dhparam__deploy_state in ['present']
   with_flattened:
     - '{{ dhparam__base_packages }}'
